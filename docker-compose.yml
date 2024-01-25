@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  node_app:
+    container_name: nadetdev_nodejs_api
+    build: .
+    image: nadetdev/nodejs_postgres_sequelize_api
+    ports:
+      - '3000:3000'
+    environment:
+      - PG_DB=my_db_api
+      - PG_USER=nadetdev
+      - PG_PASSWORD=123456
+      - PG_PORT=nadetdev_pg_db
+    depends_on:
+      - node_db
+
+  node_db:
+    container_name: nadetdev_pg_db
+    image: postgres:15
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=my_db_api
+      - POSTGRES_USER=nadetdev
+      - POSTGRES_PASSWORD=123456
+    volumes:
+      - node_db_data:/var/lib/postgresql/data
+
+volumes:
+  node_db_data: {}

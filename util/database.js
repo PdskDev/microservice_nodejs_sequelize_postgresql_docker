@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(
+const database = new Sequelize(
   process.env.PG_DB,
   process.env.PG_USER,
   process.env.PG_PASSWORD,
@@ -9,3 +9,5 @@ const sequelize = new Sequelize(
     dialect: 'postgres',
   }
 );
+
+module.exports = database;

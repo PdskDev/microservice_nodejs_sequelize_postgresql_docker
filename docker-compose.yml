@@ -11,7 +11,7 @@ services:
       - PG_DB=my_db_api
       - PG_USER=nadetdev
       - PG_PASSWORD=123456
-      - PG_PORT=nadetdev_pg_db
+      - PG_HOST=node_db
     depends_on:
       - node_db
 

@@ -1,16 +1,16 @@
 This tutorial project implements a microservice built under Node.js + Express using the Sequelize ORM and a Postgresql database then all mounted on 2 Docker containers.
 
-How to test:
+How to test on your computer:
 
-- Install Docker Desktop on your workstation
+- Install Docker Desktop,
 - Install Postman,
-- Git clone of the project,
-- In the terminal go to the root of the project, run the commands:
+- Create project folder and Git clone https://github.com/PdskDev/microservice_nodejs_sequelize_postgresql_docker.git,
+- In the terminal go to the root of the project folder, run the commands:
   
-1. docker compose build
-2. docker compose up
+          1. docker compose build
+          2. docker compose up
 
-- Once the containers are activated, test with Postman on the roads
+- Once the containers are activated, test with Postman with following routes
   
 Welcome test message Get: localhost:3000/
 

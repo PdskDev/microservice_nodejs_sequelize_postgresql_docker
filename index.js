@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('sequelize');
 const User = require('./models/user');
+const database = require('./util/database');
+const users_routes = require('./routes/users');
 
 const app = express();
 
@@ -23,7 +25,7 @@ app.get('/', (req, res, next) => {
 });
 
 //CRUD routes
-app.use('/users', require('./routes/users'));
+app.use('/users', users_routes);
 
 //Error handling
 app.use((error, req, res, next) => {
@@ -34,7 +36,7 @@ app.use((error, req, res, next) => {
 });
 
 //sync database
-sequelize
+database
   .sync()
   .then((result) => {
     console.log('Database connected');

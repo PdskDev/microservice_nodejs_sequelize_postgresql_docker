@@ -1,7 +1,7 @@
 const User = require('../models/user');
 
 //Get All users
-exports.getUsers = (req, res, next) => {
+const getUsers = (req, res, next) => {
   User.findAll()
     .then((users) => {
       res.status(200).json({ users: users });
@@ -10,7 +10,7 @@ exports.getUsers = (req, res, next) => {
 };
 
 //Get one user by Id
-exports.getUser = (req, res, next) => {
+const getUser = (req, res, next) => {
   const userId = req.params.userId;
   User.findByPk(userId)
     .then((user) => {
@@ -23,7 +23,7 @@ exports.getUser = (req, res, next) => {
 };
 
 //Create user
-exports.createUser = (req, res, next) => {
+const createUser = (req, res, next) => {
   const newName = req.body.name;
   const newEmail = req.body.email;
 
@@ -42,7 +42,7 @@ exports.createUser = (req, res, next) => {
 };
 
 //Update user
-exports.UpdateUser = (req, res, next) => {
+const updateUser = (req, res, next) => {
   const userId = req.params.userId;
   const nameToUpdate = req.body.name;
   const emailToUpdate = req.body.email;
@@ -66,7 +66,7 @@ exports.UpdateUser = (req, res, next) => {
 };
 
 //Delete User
-exports.deleteUser = (req, res, next) => {
+const deleteUser = (req, res, next) => {
   const userId = req.params.userId;
 
   User.findByPk(userId)
@@ -85,4 +85,12 @@ exports.deleteUser = (req, res, next) => {
       res.status(200).json({ message: 'User deleted successfully' });
     })
     .catch((error) => console.log(error));
+};
+
+module.exports = {
+  getUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
 };
